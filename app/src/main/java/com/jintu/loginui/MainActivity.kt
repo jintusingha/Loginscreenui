@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jintu.loginui.ui.login.Loginscreen
 import com.jintu.loginui.ui.theme.LoginuiTheme
 
 
@@ -43,46 +44,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Loginscreen(){
-    var username by remember { mutableStateOf("") }
-    var password by remember {mutableStateOf("")}
-
-    Column(modifier = Modifier.
-    fillMaxSize().padding(16.dp),
-        verticalArrangement =
-    Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally)
-    {
-
-        // now we will use for first input field for our username
-        OutlinedTextField(
-            value = username,
-            onValueChange = {username=it },
-            label = {Text("Username")},
-            modifier = Modifier.fillMaxWidth()
-
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        OutlinedTextField(
-            value=password,
-            onValueChange ={password=it},
-            label = {Text("Password")},
-            visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-
-        Button(modifier = Modifier.fillMaxWidth(),
-            onClick = {}) {
-            Text("Login")
-        }
-
-
-    }
-
-}
