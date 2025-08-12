@@ -1,5 +1,6 @@
-package com.jintu.loginui.ui.login
+package com.jintu.loginui.ui.Screens
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,13 +18,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun Loginscreen(){
+fun Loginscreen(navController: NavController){
     var username by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
+    val context=LocalContext.current
 
     Column(modifier = Modifier.
     fillMaxSize().padding(16.dp),
@@ -55,7 +59,22 @@ fun Loginscreen(){
 
 
         Button(modifier = Modifier.fillMaxWidth(),
-            onClick = {}) {
+            onClick = {
+
+                val Username="jintu28"
+                val Password="Jintu@28"
+
+                if (username == Username && password == Password) {
+
+                    Toast.makeText(context, "User login successful", Toast.LENGTH_SHORT).show()
+                    navController.navigate("welcome/$username")
+
+                } else {
+
+                    Toast.makeText(context, "User login not successful", Toast.LENGTH_SHORT).show()
+                }
+
+            }) {
             Text("Login")
         }
 
