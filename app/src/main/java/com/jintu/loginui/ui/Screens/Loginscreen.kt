@@ -21,10 +21,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.jintu.loginui.ui.viewmodel.Loginscreenviewmodel
 
 @Composable
-fun Loginscreen(navController: NavController){
+fun Loginscreen(navController: NavController,viewModel: Loginscreenviewmodel){
     var username by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
     val context=LocalContext.current
@@ -61,18 +63,13 @@ fun Loginscreen(navController: NavController){
         Button(modifier = Modifier.fillMaxWidth(),
             onClick = {
 
-                val Username="jintu28"
-                val Password="Jintu@28"
+                viewModel.getuserdetails(username,password)
 
-                if (username == Username && password == Password) {
 
-                    Toast.makeText(context, "User login successful", Toast.LENGTH_SHORT).show()
-                    navController.navigate("welcome/$username")
 
-                } else {
 
-                    Toast.makeText(context, "User login not successful", Toast.LENGTH_SHORT).show()
-                }
+
+
 
             }) {
             Text("Login")
