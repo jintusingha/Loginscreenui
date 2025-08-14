@@ -1,9 +1,11 @@
 package com.jintu.loginui.domain
 
 import com.jintu.loginui.data.User
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class Signupusecase (private val userrepository:Userrepository){
+@Singleton
+class Signupusecase @Inject constructor (private val userrepository:Userrepository){
 
     suspend fun execute(user: User){
 

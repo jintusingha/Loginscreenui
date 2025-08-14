@@ -9,11 +9,12 @@ import androidx.room.RoomDatabase
 import kotlinx.serialization.descriptors.PrimitiveKind
 
 
-@Entity(tableName="users")
+@Entity(tableName = "users")
 data class User(
-    @PrimaryKey(autoGenerate = true) val id:Long=0,
-    val username:String,
-    val password:String
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val username: String,
+    val password: String
 )
 
 

@@ -1,5 +1,7 @@
 package com.jintu.loginui.ui.Screens
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,30 +23,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.jintu.loginui.ui.viewmodel.Loginscreenviewmodel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun Loginscreen(navController: NavController,viewModel: Loginscreenviewmodel){
+fun Loginscreen(navController: NavController,viewModel: Loginscreenviewmodel=hiltViewModel()){
     var username by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
     val context=LocalContext.current
 
-    Column(modifier = Modifier.
-    fillMaxSize().padding(16.dp),
-        verticalArrangement =
-            Arrangement.Center,
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally)
     {
-
-        // now we will use for first input field for our username
         OutlinedTextField(
             value = username,
             onValueChange = {username=it },
             label = {Text("Username")},
             modifier = Modifier.fillMaxWidth()
-
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -59,23 +58,17 @@ fun Loginscreen(navController: NavController,viewModel: Loginscreenviewmodel){
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
-        Button(modifier = Modifier.fillMaxWidth(),
+        Button(
+            modifier = Modifier.fillMaxWidth(),
             onClick = {
+                Log.d("YEAH BABY", "Login button clicked with username: $username")
+                // Call the ViewModel to save the user details
+                viewModel.getuserdetails(username, password)
 
-                viewModel.getuserdetails(username,password)
-
-
-
-
-
-
-
+                // Navigate to the welcome screen, passing the username as an argument
+                navController.navigate("welcome/$username")
             }) {
             Text("Login")
         }
-
-
     }
-
 }

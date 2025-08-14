@@ -4,15 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jintu.loginui.data.User
 import com.jintu.loginui.domain.Signupusecase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class Loginscreenviewmodel (private val signupusecase: Signupusecase): ViewModel(){
+@HiltViewModel
+class Loginscreenviewmodel @Inject constructor(private val signupusecase: Signupusecase): ViewModel(){
 
 
     fun getuserdetails(username:String, password:String){
 
-        val newuser= User(1,username,password)
+        val newuser = User(username = username, password = password)
         viewModelScope.launch {
             signupusecase.execute(newuser)
         }
