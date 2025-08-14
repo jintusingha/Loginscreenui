@@ -1,6 +1,6 @@
 
 
-// src/main/java/com/jintu/loginui/di/DatabaseModule.kt
+
 package com.jintu.loginui.di
 
 import android.content.Context

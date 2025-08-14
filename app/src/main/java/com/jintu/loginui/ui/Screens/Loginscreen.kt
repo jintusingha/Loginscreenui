@@ -61,11 +61,11 @@ fun Loginscreen(navController: NavController,viewModel: Loginscreenviewmodel=hil
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                Log.d("YEAH BABY", "Login button clicked with username: $username")
-                // Call the ViewModel to save the user details
+
+
                 viewModel.getuserdetails(username, password)
 
-                // Navigate to the welcome screen, passing the username as an argument
+
                 navController.navigate("welcome/$username")
             }) {
             Text("Login")

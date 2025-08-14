@@ -1,4 +1,3 @@
-// In your ScreenNavigation.kt file
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
