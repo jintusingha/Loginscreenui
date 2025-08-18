@@ -1,8 +1,6 @@
 package com.jintu.loginui.ui.Screens
 
-import android.content.ContentValues.TAG
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,55 +18,70 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.jintu.loginui.ui.viewmodel.Loginscreenviewmodel
-import androidx.hilt.navigation.compose.hiltViewModel
+import java.nio.file.WatchEvent
+
 
 @Composable
-fun Loginscreen(navController: NavController,viewModel: Loginscreenviewmodel=hiltViewModel()){
-    var username by remember { mutableStateOf("") }
-    var password by remember {mutableStateOf("")}
-    val context=LocalContext.current
+fun LoginScreen(){
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(16.dp),
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
+
+    Column (modifier = Modifier.fillMaxSize().padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally)
     {
+
         OutlinedTextField(
             value = username,
-            onValueChange = {username=it },
-            label = {Text("Username")},
+            onValueChange = {username=it},
+            label = { Text("username") },
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
+        Spacer(modifier = Modifier.height(4.dp))
         OutlinedTextField(
             value=password,
-            onValueChange ={password=it},
-            label = {Text("Password")},
-            visualTransformation = PasswordVisualTransformation(),
+            onValueChange = {password=it},
+            label={Text("passsword")},
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
 
-
-                viewModel.getuserdetails(username, password)
-
-
-                navController.navigate("welcome/$username")
-            }) {
+            }
+        ) {
             Text("Login")
         }
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+}
+
+
+
+@Preview(showSystemUi = true)
+@Composable
+fun watchloginscreen(){
+    LoginScreen()
 }

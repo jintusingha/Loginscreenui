@@ -5,9 +5,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.jintu.loginui.ui.Screens.LoginScreen
 
 
-import com.jintu.loginui.ui.Screens.Loginscreen
+import com.jintu.loginui.ui.Screens.Signupscreen
 import com.jintu.loginui.ui.Screens.WelcomeScreen
 
 @Composable
@@ -20,7 +21,10 @@ fun ScreenNavigation(){
     ){
 
         composable("login"){
-            Loginscreen(navController)
+            Signupscreen(navController)
+        }
+        composable ("signup"){
+            LoginScreen()
         }
 
 

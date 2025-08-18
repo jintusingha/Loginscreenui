@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.jintu.loginui.ui.Screens.Loginscreen
+
 import com.jintu.loginui.ui.theme.LoginuiTheme
 import dagger.hilt.android.AndroidEntryPoint
 

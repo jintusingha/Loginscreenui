@@ -11,15 +11,20 @@ import kotlinx.serialization.descriptors.PrimitiveKind
 
 @Entity(tableName = "users")
 data class User(
+
     @PrimaryKey(autoGenerate = true)
+
     val id: Int = 0,
     val username: String,
     val password: String
 )
 
 
+
+
 @Dao
 interface UserDao {
+
     @Insert
     suspend fun insertuser(user:User)
     
@@ -28,5 +33,8 @@ interface UserDao {
 
 @Database(entities = [User::class], version = 1)
 abstract class AppDatabase: RoomDatabase(){
+
+
+
     abstract fun userDao(): UserDao
 }

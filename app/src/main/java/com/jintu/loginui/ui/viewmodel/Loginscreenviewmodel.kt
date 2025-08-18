@@ -1,5 +1,6 @@
 package com.jintu.loginui.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jintu.loginui.data.User
@@ -13,6 +14,8 @@ class Loginscreenviewmodel @Inject constructor(private val signupusecase: Signup
 
 
     fun getuserdetails(username:String, password:String){
+
+
 
         val newuser = User(username = username, password = password)
         viewModelScope.launch {
