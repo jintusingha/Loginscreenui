@@ -22,11 +22,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.jintu.loginui.ui.viewmodel.Loginscreenviewmodel
+import com.jintu.loginui.ui.viewmodel.Signupscreenviewmodel
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun Signupscreen(navController: NavController,viewModel: Loginscreenviewmodel=hiltViewModel()){
+fun Signupscreen(navController: NavController,viewModel: Signupscreenviewmodel=hiltViewModel()){
     var username by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
     val context=LocalContext.current
