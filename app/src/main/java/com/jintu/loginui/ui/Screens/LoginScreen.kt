@@ -20,11 +20,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.jintu.loginui.ui.viewmodel.Loginscreenviewmodel
 import java.nio.file.WatchEvent
 
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(navController: NavController){
+
+    val viewmodel: Loginscreenviewmodel= hiltViewModel()
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -55,6 +60,17 @@ fun LoginScreen(){
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
+                viewmodel.login(username,password){Sucess->
+                    if (Sucess){
+                        navController.navigate("welcome")
+                    }else{
+                        Log.d("Loginscreen","invalid crediantials")
+                    }
+                }
+
+
+
+
 
             }
         ) {
@@ -80,8 +96,3 @@ fun LoginScreen(){
 
 
 
-@Preview(showSystemUi = true)
-@Composable
-fun watchloginscreen(){
-    LoginScreen()
-}

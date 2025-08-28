@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Entity
 import androidx.room.Insert
 import androidx.room.PrimaryKey
+import androidx.room.Query
 import androidx.room.RoomDatabase
 import kotlinx.serialization.descriptors.PrimitiveKind
 
@@ -27,6 +28,9 @@ interface UserDao {
 
     @Insert
     suspend fun insertuser(user:User)
+
+    @Query("select * from users where username=:username AND password=:password")
+    suspend fun getusernameandpassword(username:String,password: String):User?
     
 }
 

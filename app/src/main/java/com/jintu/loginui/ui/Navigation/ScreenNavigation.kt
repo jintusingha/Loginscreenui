@@ -24,12 +24,13 @@ fun ScreenNavigation(){
             Signupscreen(navController)
         }
         composable ("signup"){
-            LoginScreen()
+            LoginScreen(navController)
+        }
+        composable ("welcome"){
+            WelcomeScreen(navController)
         }
 
 
-        composable("welcome/{username}") { backStackEntry ->
-            val username = backStackEntry.arguments?.getString("username")
-            WelcomeScreen(username)
-    }}
+
+    }
 }
